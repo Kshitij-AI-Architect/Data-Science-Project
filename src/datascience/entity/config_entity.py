@@ -16,3 +16,18 @@ class DataIngestionConfig:
     local_data_file: Path
     source_URL: str
     unzip_dir: Path
+    
+@dataclass
+class DataValidationConfig:
+    """
+    Configuration for data validation process.
+    
+    Attributes:
+        root_dir (Path): Path to store validation results.
+        status_file (str): Name of the status file.
+        unzip_data_dir (Path): Path to store the unzipped data.
+    """
+    root_dir: Path
+    status_file: str
+    unzip_data_dir: Path
+    all_schema: dict
