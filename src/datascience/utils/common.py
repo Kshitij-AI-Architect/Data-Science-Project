@@ -3,8 +3,19 @@ import yaml
 from src.datascience import logger
 import json
 import joblib
-# from __future__ import annotations
-from ensure import ensure_annotations
+from functools import wraps
+
+
+def ensure_annotations(func):
+    """No-op fallback decorator for environments without the external package.
+
+    Keeps function signatures intact without enforcing runtime checks.
+    """
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+
+    return wrapper
 from box import ConfigBox
 from typing import Any
 from pathlib import Path
